@@ -8,11 +8,10 @@ import java.net.Socket;
 public class Main {
     public static void main(String[] args) throws Exception {
         BooleanSearchEngine engine = new BooleanSearchEngine(new File("pdfs"));
-
         GsonBuilder builder = new GsonBuilder();
         Gson gson = builder.create();
 
-        try (ServerSocket server = new ServerSocket(8989);) {
+        try (ServerSocket server = new ServerSocket(8989)) {
             while (true) {
                 try (Socket client = server.accept()) {
                     PrintWriter writer = new PrintWriter(client.getOutputStream(), true);
